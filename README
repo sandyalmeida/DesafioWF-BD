@@ -1,0 +1,44 @@
+# DesafioWF-BD
+Desafio WinForms com Banco de Dados
+
+Script criação tabelas
+
+-- criando a tabela Cliente
+CREATE TABLE Cliente(
+  idCliente INT IDENTITY(1,1) NOT NULL,
+  CPF VARCHAR (11) NOT NULL,
+  Nome VARCHAR(45) NOT NULL,
+  Telefone VARCHAR(12) NOT NULL,
+  Email VARCHAR(45) NOT NULL,
+  
+  PRIMARY KEY (idCliente)
+);
+
+CREATE TABLE Produto(
+  idProduto INT IDENTITY(1,1) NOT NULL,
+  Nome VARCHAR(45) NOT NULL,
+  Preço DECIMAL(11,2) NOT NULL,
+  Estoque INT NOT NULL,
+  
+  PRIMARY KEY (idProduto)
+);
+
+CREATE TABLE Venda(
+  idVenda INT IDENTITY(1,1) NOT NULL,
+  CodigoCliente int NOT NULL,
+  ValorTotal DECIMAL(11,2) NOT NULL,
+  PRIMARY KEY (idVenda),
+  FOREIGN KEY (CodigoCliente) references Cliente (idCliente)
+);
+
+CREATE TABLE ProdutoVenda(
+  idProdutoVenda INT IDENTITY(1,1) NOT NULL,
+  idVenda INT NOT NULL,
+  idProduto INT NOT NULL,
+  ValorUnitario DECIMAL (11,2) NOT NULL,
+  Quantidade INT NOT NULL,
+  ValorTotal DECIMAL(11,2) NOT NULL,
+  PRIMARY KEY (idProdutoVenda),
+  FOREIGN KEY (idProduto) references Produto (idProduto),
+  FOREIGN KEY (idVenda) references Venda (idVenda)
+);
