@@ -74,7 +74,7 @@ namespace DesafioWF_BD
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
             var linha = dtGridProdutos.CurrentCell.OwningRow;
-            var idproduto = dtGridProdutos.CurrentCell.Value;
+            var idproduto = linha.Cells[4].Value.ToString();
             var nomeProduto = linha.Cells[1].Value.ToString();
             var valor = linha.Cells[2].Value.ToString();
 
@@ -120,6 +120,16 @@ namespace DesafioWF_BD
         }
 
         private void txtCPF_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
         }
